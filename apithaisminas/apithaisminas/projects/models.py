@@ -1,5 +1,7 @@
 from django.db import models
 
+from froala_editor.fields import FroalaField
+
 class Categorie(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField('Nome:', max_length=35)
@@ -27,7 +29,7 @@ class Project(models.Model):
     categorie = models.ForeignKey(Categorie, null=True, related_name='projects', on_delete=models.CASCADE)
     name = models.CharField('Nome:', max_length=50)
     description_short = models.CharField('Descrição curta:', max_length=50)
-    content = models.TextField('Conteúdo:')
+    content = FroalaField('Conteúdo:')
     cover_image = models.ImageField('Imagem de capa:', max_length=100, upload_to='projects')
     slug = models.SlugField('Identificador:', max_length=50)
     status = models.BooleanField(default=True)

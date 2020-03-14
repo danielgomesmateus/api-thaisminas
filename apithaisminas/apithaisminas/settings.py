@@ -38,11 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'froala_editor',
     'apithaisminas.core',
     'apithaisminas.contacts',
     'apithaisminas.pages',
     'apithaisminas.projects',
-    'apithaisminas.photos'
+    'apithaisminas.photos',
 ]
 
 MIDDLEWARE = [
