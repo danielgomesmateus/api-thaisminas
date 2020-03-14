@@ -9,14 +9,14 @@ from rest_framework.response import Response
 
 class ProjectView(ViewSet):
 
-    def get_object(self, pk):
+    def get_object(self, slug):
         try:
-            return Project.objects.get(pk=pk)
+            return Project.objects.get(slug=slug)
         except Project.DoesNotExist:
             raise Http404
 
-    def retrieve(self, request, pk, format=None):
-        project = self.get_object(pk)
+    def retrieve(self, request, slug, format=None):
+        project = self.get_object(slug)
         serializer = ProjectSerializer(project)
         
         return Response(serializer.data)

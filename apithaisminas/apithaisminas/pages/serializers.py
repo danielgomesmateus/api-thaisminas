@@ -6,8 +6,6 @@ class PageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Page
         fields = (
-            'id', 
             'title', 
-            'content', 
-            'slug'
+            'content'
         )
