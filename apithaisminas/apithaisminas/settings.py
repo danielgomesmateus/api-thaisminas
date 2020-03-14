@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'apithaisminas.core',
     'apithaisminas.contacts',
     'apithaisminas.pages',
-    'apithaisminas.projects'
+    'apithaisminas.projects',
+    'apithaisminas.photos'
 ]
 
 MIDDLEWARE = [

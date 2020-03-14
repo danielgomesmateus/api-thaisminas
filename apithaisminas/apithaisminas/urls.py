@@ -23,7 +23,8 @@ from . import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apithaisminas.core.urls')),
-    path('project/', include('apithaisminas.projects.urls')),
+    path('category/', include('apithaisminas.projects.urls')),
     path('page/', include('apithaisminas.pages.urls')),
     path('contact/', include('apithaisminas.contacts.urls')),
+    path('album/', include('apithaisminas.photos.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
