@@ -22,5 +22,5 @@ class Page(models.Model):
             'updated_at'
         ]
 
-        def __str__(self):
-            return self.title
+    def __str__(self):
+        return self.title
