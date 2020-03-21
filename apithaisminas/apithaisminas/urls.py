@@ -37,6 +37,3 @@ urlpatterns = [
     path('galleries/', include('apithaisminas.galleries.urls')),
     path('v1/', include(router.urls))
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-#urlpatterns += contacts_router.urls
-#urlpatterns += pages_router.urls
