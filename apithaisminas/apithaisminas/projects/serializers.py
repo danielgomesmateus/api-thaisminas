@@ -4,7 +4,7 @@ from rest_framework.serializers import ModelSerializer
 from .models import Project, Categorie
 
 class ProjectSerializer(ModelSerializer):
-    
+
     class Meta:
         model = Project
         fields = (
@@ -17,9 +17,12 @@ class ProjectSerializer(ModelSerializer):
 
 class CategorieSerializer(ModelSerializer):
 
+    projects = ProjectSerializer(many=True)
+
     class Meta:
         model = Categorie
         fields = (
             'name',
-            'slug'
+            'slug',
+            'projects'
         )
