@@ -1,27 +1,10 @@
-from .models import Photo, Album
+from .models import Album
 from .serializers import AlbumSerializer
 
-from django.http import Http404
+from rest_framework.viewsets import ModelViewSet
 
-from rest_framework.viewsets import ViewSet
-from rest_framework.response import Response
-
-class GalleryView(ViewSet):
-
-    def get_object(self, slug):
-        try:
-            return Album.objects.get(slug=slug)
-        except Album.DoesNotExist:
-            raise Http404
-
-    def retrieve(self, request, slug, format=None):
-        album = self.get_object(slug)
-        serializer = AlbumSerializer(album)
-
-        return Response(serializer.data)
-
-    def list(self, request):
-        albums = Album.objects.all()
-        serializer = AlbumSerializer(albums, many=True)
-
-        return Response(serializer.data)
+class GalleryView(ModelViewSet):
+    queryset = Album.objects.all()
+    serializer_class = AlbumSerializer
+    http_method_names = ['get']
+    lookup_field = 'slug'
