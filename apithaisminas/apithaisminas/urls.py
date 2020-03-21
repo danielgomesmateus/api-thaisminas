@@ -20,11 +20,13 @@ from apithaisminas.core.views import index
 from django.conf.urls.static import static
 from . import settings
 
+from apithaisminas.pages.urls import router
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apithaisminas.core.urls')),
     path('projects/', include('apithaisminas.projects.urls')),
-    path('pages/', include('apithaisminas.pages.urls')),
     path('contacts/', include('apithaisminas.contacts.urls')),
     path('galleries/', include('apithaisminas.galleries.urls')),
+    path('v1/', include(router.urls))
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
