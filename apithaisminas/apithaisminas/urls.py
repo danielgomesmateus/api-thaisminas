@@ -25,16 +25,17 @@ from rest_framework.routers import DefaultRouter
 from apithaisminas.contacts.urls import router as contacts_router
 from apithaisminas.pages.urls import router as pages_router
 from apithaisminas.galleries.urls import router as galleries_router
+from apithaisminas.projects.urls import router as projects_router
 
 router = DefaultRouter()
 
 router.registry.extend(contacts_router.registry)
 router.registry.extend(pages_router.registry)
 router.registry.extend(galleries_router.registry)
+router.registry.extend(projects_router.registry)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apithaisminas.core.urls')),
-    path('projects/', include('apithaisminas.projects.urls')),
     path('v1/', include(router.urls))
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
