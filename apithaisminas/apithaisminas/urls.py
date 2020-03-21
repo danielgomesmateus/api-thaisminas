@@ -20,13 +20,23 @@ from apithaisminas.core.views import index
 from django.conf.urls.static import static
 from . import settings
 
-from apithaisminas.pages.urls import router
+from rest_framework.routers import DefaultRouter
+
+from apithaisminas.contacts.urls import router as contacts_router
+from apithaisminas.pages.urls import router as pages_router
+
+router = DefaultRouter()
+
+router.registry.extend(contacts_router.registry)
+router.registry.extend(pages_router.registry)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apithaisminas.core.urls')),
     path('projects/', include('apithaisminas.projects.urls')),
-    path('contacts/', include('apithaisminas.contacts.urls')),
     path('galleries/', include('apithaisminas.galleries.urls')),
     path('v1/', include(router.urls))
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+#urlpatterns += contacts_router.urls
+#urlpatterns += pages_router.urls

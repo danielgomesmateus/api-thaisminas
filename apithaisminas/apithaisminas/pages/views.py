@@ -8,3 +8,4 @@ class PageView(ModelViewSet):
     serializer_class = PageSerializer
     http_method_names = ['get']
     lookup_field = 'slug'
+    
