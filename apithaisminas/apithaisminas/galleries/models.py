@@ -12,13 +12,7 @@ class Album(models.Model):
     class Meta:
         verbose_name = 'Álbum'
         verbose_name_plural = 'Álbums'
-        ordering = [
-            'id',
-            'name',
-            'description_short',
-            'created_at',
-            'updated_at'
-        ]
+        ordering = ['-id']
 
     def __str__(self):
         return self.name    
@@ -35,13 +29,7 @@ class Photo(models.Model):
     class Meta:
         verbose_name = 'Foto'
         verbose_name_plural = 'Fotos'
-        ordering = [
-            'id',
-            'photo',
-            'description_short',
-            'created_at',
-            'updated_at'
-        ]
+        ordering = ['-id']
 
     def __str__(self):
         return '{}'.format(self.photo)

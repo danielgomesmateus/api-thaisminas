@@ -12,15 +12,7 @@ class Contact(models.Model):
     class Meta:
         verbose_name = 'Contato'
         verbose_name_plural = 'Contatos'
-        ordering = [
-            'id',
-            'name',
-            'email',
-            'phone',
-            'message',
-            'created_at',
-            'updated_at'
-        ]
+        ordering = ['-id']
 
     def __str__(self):
         return self.name
