@@ -17,12 +17,9 @@ class ProjectSerializer(ModelSerializer):
 
 class CategorieSerializer(ModelSerializer):
 
-    projects = ProjectSerializer(many=True)
-
     class Meta:
         model = Categorie
         fields = (
             'name',
-            'slug',
-            'projects'
+            'slug'
         )
