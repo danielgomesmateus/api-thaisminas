@@ -154,7 +154,15 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 (57,	'Can add Theme',	15,	'add_theme'),
 (58,	'Can change Theme',	15,	'change_theme'),
 (59,	'Can delete Theme',	15,	'delete_theme'),
-(60,	'Can view Theme',	15,	'view_theme');
+(60,	'Can view Theme',	15,	'view_theme'),
+(61,	'Can add Álbum',	16,	'add_album'),
+(62,	'Can change Álbum',	16,	'change_album'),
+(63,	'Can delete Álbum',	16,	'delete_album'),
+(64,	'Can view Álbum',	16,	'view_album'),
+(65,	'Can add Foto',	17,	'add_photo'),
+(66,	'Can change Foto',	17,	'change_photo'),
+(67,	'Can delete Foto',	17,	'delete_photo'),
+(68,	'Can view Foto',	17,	'view_photo');
 
 DROP TABLE IF EXISTS `auth_user`;
 CREATE TABLE `auth_user` (
@@ -174,7 +182,7 @@ CREATE TABLE `auth_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(1,	'pbkdf2_sha256$180000$nMZRswskNaOb$GiV3kfApgY6jDDO+eNKfOasU4h5qwrwOIyTpz4nAPPM=',	'2020-03-15 14:14:28.206062',	1,	'daniel',	'',	'',	'contato@danielgmateus.com.br',	1,	1,	'2020-03-14 12:44:31.996261');
+(1,	'pbkdf2_sha256$180000$nMZRswskNaOb$GiV3kfApgY6jDDO+eNKfOasU4h5qwrwOIyTpz4nAPPM=',	'2020-03-21 10:51:51.843444',	1,	'daniel',	'',	'',	'contato@danielgmateus.com.br',	1,	1,	'2020-03-14 12:44:31.996261');
 
 DROP TABLE IF EXISTS `auth_user_groups`;
 CREATE TABLE `auth_user_groups` (
@@ -277,7 +285,10 @@ INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`,
 (39,	'2020-03-15 14:15:43.799000',	'2',	'Bootstrap',	2,	'[{\"changed\": {\"fields\": [\"Active\"]}}]',	15,	1),
 (40,	'2020-03-15 14:15:44.055278',	'1',	'Principal',	2,	'[{\"changed\": {\"fields\": [\"Active\"]}}]',	15,	1),
 (41,	'2020-03-15 14:15:54.414528',	'1',	'Principal',	2,	'[{\"changed\": {\"fields\": [\"Visible\"]}}]',	15,	1),
-(42,	'2020-03-15 14:16:03.514052',	'1',	'Django',	2,	'[{\"changed\": {\"fields\": [\"Name\"]}}]',	15,	1);
+(42,	'2020-03-15 14:16:03.514052',	'1',	'Django',	2,	'[{\"changed\": {\"fields\": [\"Name\"]}}]',	15,	1),
+(43,	'2020-03-21 11:33:38.340048',	'1',	'Python Brasil 2019',	1,	'[{\"added\": {}}]',	16,	1),
+(44,	'2020-03-21 11:33:48.309672',	'2',	'PHP Conference 2020',	1,	'[{\"added\": {}}]',	16,	1),
+(45,	'2020-03-21 11:35:17.474851',	'1',	'photos/pybr13.jpg',	1,	'[{\"added\": {}}]',	17,	1);
 
 DROP TABLE IF EXISTS `django_content_type`;
 CREATE TABLE `django_content_type` (
@@ -298,6 +309,8 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (4,	'auth',	'user'),
 (7,	'contacts',	'contact'),
 (5,	'contenttypes',	'contenttype'),
+(16,	'galleries',	'album'),
+(17,	'galleries',	'photo'),
 (8,	'pages',	'page'),
 (12,	'photos',	'album'),
 (11,	'photos',	'photo'),
@@ -357,7 +370,10 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (55,	'admin_interface',	'0013_add_related_modal_close_button',	'2020-03-15 13:57:12.808565'),
 (56,	'admin_interface',	'0014_name_unique',	'2020-03-15 13:57:13.276039'),
 (57,	'admin_interface',	'0015_add_language_chooser_active',	'2020-03-15 13:57:14.282271'),
-(58,	'admin_interface',	'0016_add_language_chooser_display',	'2020-03-15 13:57:15.075937');
+(58,	'admin_interface',	'0016_add_language_chooser_display',	'2020-03-15 13:57:15.075937'),
+(59,	'galleries',	'0001_initial',	'2020-03-21 11:32:29.726734'),
+(60,	'pages',	'0002_auto_20200321_1132',	'2020-03-21 11:32:31.391193'),
+(61,	'projects',	'0004_auto_20200321_1132',	'2020-03-21 11:32:32.764266');
 
 DROP TABLE IF EXISTS `django_session`;
 CREATE TABLE `django_session` (
@@ -369,7 +385,41 @@ CREATE TABLE `django_session` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
-('w1dnl3hghtbhdahacbqoadtadp6xtx0w',	'ZGQwYWNjNTkwODdiZWVkZTdiNjRlODJlMTgwOGI4ZGEzNWYxZTM4Zjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI0NDEzMTdjZTBiNjBkYjIzNGZjOGYzYzMzYjEwNWExOWZhYmI1ZjM3In0=',	'2020-03-29 14:14:28.318023');
+('hauia3ulbnclxr54523umv9u41fx10l7',	'ZGQwYWNjNTkwODdiZWVkZTdiNjRlODJlMTgwOGI4ZGEzNWYxZTM4Zjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI0NDEzMTdjZTBiNjBkYjIzNGZjOGYzYzMzYjEwNWExOWZhYmI1ZjM3In0=',	'2020-04-04 10:51:51.932926');
+
+DROP TABLE IF EXISTS `galleries_album`;
+CREATE TABLE `galleries_album` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(35) NOT NULL,
+  `description_short` varchar(50) NOT NULL,
+  `slug` varchar(50) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `created_at` datetime(6) NOT NULL,
+  `updated_at` datetime(6) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `galleries_album_slug_16222145` (`slug`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `galleries_album` (`id`, `name`, `description_short`, `slug`, `status`, `created_at`, `updated_at`) VALUES
+(1,	'Python Brasil 2019',	'Fotos de como foi minha ida ao Python Brasil 2019',	'python-brasil-2019',	1,	'2020-03-21 11:33:38.338218',	'2020-03-21 11:33:38.338292'),
+(2,	'PHP Conference 2020',	'Preparação para a PHP Conference 2020',	'php-conference-2020',	1,	'2020-03-21 11:33:48.308655',	'2020-03-21 11:33:48.308702');
+
+DROP TABLE IF EXISTS `galleries_photo`;
+CREATE TABLE `galleries_photo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `photo` varchar(100) NOT NULL,
+  `description_short` varchar(50) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `created_at` datetime(6) NOT NULL,
+  `updated_at` datetime(6) NOT NULL,
+  `album_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `galleries_photo_album_id_64e7435e_fk_galleries_album_id` (`album_id`),
+  CONSTRAINT `galleries_photo_album_id_64e7435e_fk_galleries_album_id` FOREIGN KEY (`album_id`) REFERENCES `galleries_album` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `galleries_photo` (`id`, `photo`, `description_short`, `status`, `created_at`, `updated_at`, `album_id`) VALUES
+(1,	'photos/pybr13.jpg',	'Lorem ipsum curae enim habitant orci curabitur.',	1,	'2020-03-21 11:35:17.473138',	'2020-03-21 11:35:17.473197',	1);
 
 DROP TABLE IF EXISTS `pages_page`;
 CREATE TABLE `pages_page` (
@@ -386,41 +436,6 @@ CREATE TABLE `pages_page` (
 
 INSERT INTO `pages_page` (`id`, `title`, `content`, `slug`, `status`, `created_at`, `updated_at`) VALUES
 (1,	'Lorem ipsum dolor sit amet',	'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam suscipit augue sit amet tincidunt venenatis. Suspendisse consectetur felis metus, et rutrum arcu pellentesque eget. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Curabitur tristique dolor ac arcu dignissim bibendum. Maecenas fringilla tellus ac tempus suscipit. Mauris vel nisl sed neque auctor efficitur. Aliquam ultrices finibus eros ac condimentum. Mauris tortor metus, suscipit at tortor id, venenatis dapibus mi. Aenean id nisl felis. Sed lectus urna, aliquet eu dictum et, porta ac turpis. Donec varius ac odio ac imperdiet.\r\n\r\nIn nec arcu at nisl ornare tincidunt at ac lectus. Proin hendrerit placerat libero at bibendum. Suspendisse ullamcorper eros sed ipsum pretium, molestie sollicitudin elit eleifend. Donec maximus mauris sit amet dui feugiat, a accumsan tortor tempor. Maecenas vitae feugiat magna, quis iaculis massa. Praesent sodales facilisis risus sit amet ullamcorper. Proin sit amet lorem lorem.\r\n\r\nEtiam vehicula nibh in aliquam malesuada. Aliquam sagittis et erat non tempor. Nulla vitae lacus eros. Etiam pulvinar tortor nec nisl porta, at pulvinar nibh ullamcorper. Etiam sodales velit quis lacus convallis, ut convallis velit imperdiet. Duis sagittis euismod est, sed faucibus nisi tristique id. Nunc imperdiet orci mauris. Morbi congue mi eu nunc vehicula egestas. Aenean dapibus at justo ut imperdiet.\r\n\r\nAenean nec imperdiet neque. Vivamus lectus magna, dignissim at pretium id, porttitor eu diam. Sed non dignissim nulla. Donec eu tincidunt tortor. Duis magna leo, rutrum tempor consectetur quis, scelerisque in nisl. Sed egestas orci a ex consectetur, non venenatis arcu interdum. Nunc et eros vel dolor ultrices aliquam. Maecenas varius laoreet malesuada. Vestibulum tempor nulla eu nunc pharetra, eu feugiat enim congue. Donec faucibus vel nibh aliquet vestibulum. Phasellus enim libero, aliquet nec accumsan vitae, tristique eu nibh. Sed finibus euismod laoreet. Nullam tempus lectus tincidunt tortor bibendum, quis aliquam nibh tempor. Phasellus enim risus, tempus ac dolor id, pharetra porta quam.\r\n\r\nCurabitur convallis tellus non sagittis pharetra. Fusce vel tortor sed enim iaculis accumsan eget quis leo. Pellentesque rhoncus, dolor at lacinia iaculis, velit velit tempor arcu, a fringilla felis metus id orci. Nam accumsan metus vel risus posuere, at pretium elit ullamcorper. Aliquam ut lectus consectetur, elementum dui placerat, auctor nisi. Mauris laoreet nunc diam, vel dictum turpis eleifend ut. Nunc lacinia vitae tortor quis scelerisque. Integer a porttitor risus. Aliquam erat volutpat. Ut blandit ut neque quis ullamcorper. Nulla facilisi. Donec ac feugiat turpis. Donec euismod, ipsum ornare viverra ullamcorper, odio arcu euismod odio, id malesuada est metus vitae urna.',	'lorem-ipsum-dolor-sit-amet',	1,	'2020-03-14 15:31:21.424188',	'2020-03-14 15:31:21.424234');
-
-DROP TABLE IF EXISTS `photos_album`;
-CREATE TABLE `photos_album` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(35) NOT NULL,
-  `description_short` varchar(50) NOT NULL,
-  `slug` varchar(50) NOT NULL,
-  `status` tinyint(1) NOT NULL,
-  `created_at` datetime(6) NOT NULL,
-  `updated_at` datetime(6) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `photos_album_slug_de6fbed1` (`slug`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-INSERT INTO `photos_album` (`id`, `name`, `description_short`, `slug`, `status`, `created_at`, `updated_at`) VALUES
-(1,	'Python Brasil 2019',	'Fotos de como foi minha ida ao Python Brasil 2019',	'python-brasil-2019',	1,	'2020-03-14 18:56:14.373162',	'2020-03-14 18:56:14.373200'),
-(2,	'PHP Conference 2020',	'Preparação para a PHP Conference 2020',	'php-conference-2020',	1,	'2020-03-14 18:56:24.999174',	'2020-03-14 18:56:24.999225');
-
-DROP TABLE IF EXISTS `photos_photo`;
-CREATE TABLE `photos_photo` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `photo` varchar(100) NOT NULL,
-  `description_short` varchar(50) NOT NULL,
-  `status` tinyint(1) NOT NULL,
-  `created_at` datetime(6) NOT NULL,
-  `updated_at` datetime(6) NOT NULL,
-  `album_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `photos_photo_album_id_d37b4f12_fk_photos_album_id` (`album_id`),
-  CONSTRAINT `photos_photo_album_id_d37b4f12_fk_photos_album_id` FOREIGN KEY (`album_id`) REFERENCES `photos_album` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-INSERT INTO `photos_photo` (`id`, `photo`, `description_short`, `status`, `created_at`, `updated_at`, `album_id`) VALUES
-(1,	'photos/thumbnail_1111373_720x460_iF4ZEUM.jpg',	'Preparação para a PHP Conference 2020',	1,	'2020-03-14 18:56:41.435197',	'2020-03-14 18:56:41.435241',	2),
-(2,	'photos/6-erros-comuns-gestão-de-projetos-696x390.jpg',	'Como analisar e extrair dados do Excel',	1,	'2020-03-14 19:24:13.210917',	'2020-03-14 19:24:13.210977',	2);
 
 DROP TABLE IF EXISTS `projects_categorie`;
 CREATE TABLE `projects_categorie` (
@@ -459,4 +474,4 @@ CREATE TABLE `projects_project` (
 INSERT INTO `projects_project` (`id`, `name`, `description_short`, `content`, `cover_image`, `slug`, `status`, `created_at`, `updated_at`, `categorie_id`) VALUES
 (1,	'Como analisar dados',	'Como analisar e extrair dados do Excel',	'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at finibus dui. Suspendisse viverra massa ac dictum cursus. Ut sagittis maximus nisi, quis vestibulum orci porta a. Pellentesque tempor scelerisque massa, at tincidunt arcu maximus in. Proin in augue posuere, vestibulum nibh non, tincidunt massa. Nullam aliquet euismod mi, ut mollis tellus mattis ut. Integer interdum nunc ex, sed sollicitudin tellus tempus a. Duis lacus tellus, venenatis et ex in, viverra semper turpis. Cras sed justo non tortor egestas pretium ut dignissim ex. Duis sapien arcu, pretium eu malesuada nec, pellentesque aliquet turpis. Nullam ultrices est eget vulputate vulputate. Proin et commodo quam. Donec ipsum magna, faucibus in fermentum eu, congue nec lacus. Proin aliquam gravida elementum.\r\n\r\nInteger mattis, lorem at facilisis bibendum, tortor felis pretium ipsum, vitae fringilla purus nunc ultricies magna. Nulla gravida augue vitae nunc rutrum varius. Morbi blandit cursus semper. Aliquam blandit tortor vel consequat rhoncus. Morbi rhoncus tempor urna, quis dictum purus scelerisque eget. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras hendrerit ex et metus mattis lacinia. Suspendisse tincidunt risus at tortor ultrices, non semper tortor rutrum. Curabitur eget tellus iaculis mi dictum gravida et non arcu. Aenean egestas feugiat purus, congue blandit est faucibus ut. Integer ultrices nunc sodales pharetra dapibus. Nam elit enim, imperdiet nec nibh a, porta interdum diam. Pellentesque vehicula consequat sodales. Vivamus fringilla quam elit, vitae sodales est ornare vitae. Curabitur volutpat lacus felis, et faucibus leo pharetra sit amet.\r\n\r\nUt facilisis dolor eu urna euismod sagittis. Ut dictum nulla eget tincidunt maximus. Nulla facilisi. Praesent sed ex vel libero ultrices rhoncus eu in tortor. Ut nibh magna, convallis nec erat ut, blandit cursus nisl. Proin eu lectus lorem. Sed erat enim, placerat a fermentum et, ullamcorper pharetra velit. Morbi justo metus, mattis at turpis varius, interdum convallis nisl. Fusce ligula lectus, blandit a blandit id, efficitur quis lacus. Mauris vehicula tellus sit amet felis semper convallis. Praesent ut mi purus. Quisque rhoncus felis mollis arcu ullamcorper, vel ultricies elit ultrices. Phasellus pharetra congue metus et sagittis. Nam id metus quis tortor dapibus imperdiet. Aliquam luctus erat dui, quis faucibus augue tempor sit amet. Cras rhoncus lectus sodales, convallis lorem sit amet, semper purus.\r\n\r\nQuisque quis luctus dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer viverra libero mauris, vel accumsan neque auctor non. Vivamus sodales, purus ac consequat pellentesque, sem magna accumsan leo, eu iaculis odio ipsum at turpis. Aenean nec sollicitudin mi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam sit amet sodales ipsum. Etiam velit odio, consectetur in turpis nec, semper tincidunt lorem. Nulla suscipit in massa sit amet porta. Nam sem mi, luctus id felis dignissim, pulvinar mattis velit. Sed sed viverra dolor. Pellentesque commodo risus mi, sed rutrum neque porttitor vitae. Curabitur sit amet mollis libero. Nam lorem ante, ullamcorper sit amet enim sed, tristique fringilla turpis. Fusce sed vestibulum neque, eu efficitur augue.\r\n\r\nQuisque posuere ligula non feugiat vehicula. Vestibulum commodo ex non ante auctor, vel ullamcorper erat fringilla. Integer laoreet ligula non dui mattis ultrices. Proin fringilla augue sem, id consequat ligula euismod sed. Praesent vel elementum neque. Nulla eleifend urna a purus bibendum posuere. Mauris sit amet varius nisl. Ut posuere ex eu felis efficitur, eget sodales risus lobortis. Quisque et suscipit lorem. Mauris convallis finibus orci, sit amet feugiat felis maximus vel. Suspendisse erat quam, mollis iaculis tristique in, bibendum laoreet metus. Sed fringilla sit amet neque ac sodales. Mauris congue pulvinar consequat.',	'images/6-erros-comuns-gestão-de-projetos-696x390_c1nNqIu.jpg',	'como-analisar-dados',	1,	'2020-03-14 16:22:30.668090',	'2020-03-14 16:27:21.308804',	2);
 
--- 2020-03-15 14:16:44
+-- 2020-03-21 11:38:50

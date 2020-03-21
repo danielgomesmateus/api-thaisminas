@@ -32,8 +32,6 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'admin_interface',
-    #'flat_responsive',
-    #'flat',
     'colorfield',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -47,7 +45,7 @@ INSTALLED_APPS = [
     'apithaisminas.contacts',
     'apithaisminas.pages',
     'apithaisminas.projects',
-    'apithaisminas.photos',
+    'apithaisminas.galleries',
 ]
 
 X_FRAME_OPTIONS='SAMEORIGIN'
