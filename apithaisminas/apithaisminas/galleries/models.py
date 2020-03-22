@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Album(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField('Nome:', max_length=35)
@@ -17,6 +18,7 @@ class Album(models.Model):
     def __str__(self):
         return self.name    
 
+
 class Photo(models.Model):
     id = models.AutoField(primary_key=True)
     album = models.ForeignKey(Album, null=True, related_name='photos', on_delete=models.CASCADE)
@@ -33,4 +35,3 @@ class Photo(models.Model):
 
     def __str__(self):
         return '{}'.format(self.photo)
-

@@ -1,10 +1,9 @@
-from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
 
 from .models import Photo, Album
 
-class PhotoSerializer(ModelSerializer):
 
+class PhotoSerializer(ModelSerializer):
     class Meta:
         model = Photo
         fields = [
@@ -12,8 +11,8 @@ class PhotoSerializer(ModelSerializer):
             'description_short'
         ]
 
-class AlbumSerializer(ModelSerializer):
 
+class AlbumSerializer(ModelSerializer):
     photos = PhotoSerializer(many=True)
 
     class Meta:

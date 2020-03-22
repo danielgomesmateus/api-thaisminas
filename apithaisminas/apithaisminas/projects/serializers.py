@@ -1,7 +1,7 @@
-from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
 
 from .models import Project, Categorie
+
 
 class ProjectSerializer(ModelSerializer):
 
@@ -14,6 +14,7 @@ class ProjectSerializer(ModelSerializer):
             'cover_image',
             'slug'
         )
+
 
 class CategorieSerializer(ModelSerializer):
 

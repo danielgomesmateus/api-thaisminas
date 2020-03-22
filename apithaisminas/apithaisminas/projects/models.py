@@ -2,6 +2,7 @@ from django.db import models
 
 from froala_editor.fields import FroalaField
 
+
 class Categorie(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField('Nome:', max_length=35)

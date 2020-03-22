@@ -3,6 +3,7 @@ from .serializers import AlbumSerializer
 
 from rest_framework.viewsets import ModelViewSet
 
+
 class GalleryView(ModelViewSet):
     queryset = Album.objects.filter(status=True)
     serializer_class = AlbumSerializer

@@ -25,7 +25,7 @@ SECRET_KEY = ')v%aiw9f&rb5omc)*@+_5xec1bee_&)k3(3k9q+z(7jyloa3!#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['thaisminas.com.br']
 
 
 # Application definition
