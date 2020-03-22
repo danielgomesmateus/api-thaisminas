@@ -25,7 +25,8 @@ SECRET_KEY = ')v%aiw9f&rb5omc)*@+_5xec1bee_&)k3(3k9q+z(7jyloa3!#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['thaisminas.com.br']
+ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['thaisminas.com.br']
 
 
 # Application definition
@@ -87,10 +88,10 @@ WSGI_APPLICATION = 'apithaisminas.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db_thaisminas',
-        'USER': 'root',
-        'PASSWORD': 'password',
-        'HOST': '172.17.0.1',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
         'PORT': 3306
     }
 }
@@ -146,7 +147,7 @@ REST_FRAMEWORK = {
         'rest_framework.throttling.UserRateThrottle'
     ),
     'DEFAULT_THROTTLE_RATES': {
-        'anon': '10/minute',
-        'user': '100/minute'
+        'anon': '100/minute',
+        'user': '10000/minute'
     }
 }
