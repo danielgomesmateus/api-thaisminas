@@ -13,6 +13,7 @@ Requisitos para o projeto:
 - django-froala-editor==3.1.0
 - djangorestframework==3.11.0
 - idna==2.9
+- jsonpath==0.82
 - mysqlclient==1.4.6
 - Pillow==7.0.0
 - pytz==2019.3
