@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'apithaisminas.core',
     'admin_interface',
     'colorfield',
     'django.contrib.admin',
@@ -41,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'froala_editor',
-    'apithaisminas.core',
     'apithaisminas.contacts',
     'apithaisminas.pages',
     'apithaisminas.projects',
