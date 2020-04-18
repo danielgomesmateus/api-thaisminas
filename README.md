@@ -3,6 +3,7 @@
 1) Requisitos para o projeto:
 
 - asgiref==3.2.5
+- boto3==1.12.41
 - certifi==2019.11.28
 - chardet==3.0.4
 - Django==3.0.4
@@ -12,6 +13,7 @@
 - django-flat-theme==1.1.4
 - django-froala-editor==3.1.0
 - djangorestframework==3.11.0
+- django-storages==1.9.1
 - idna==2.9
 - jsonpath==0.82
 - mysqlclient==1.4.6
@@ -51,6 +53,13 @@ DATABASES = {
         'PORT': 3306
     }
 }
+
+AWS_ACCESS_KEY_ID = ''
+AWS_SECRET_ACCESS_KEY = ''
+
+DEFAULT_FILE_STORAGE = ''
+AWS_STORAGE_BUCKET_NAME = ''
+AWS_S3_REGION_NAME = ''
 ```
 
 Complete com as informações relativas ao seu ambiente.
