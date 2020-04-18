@@ -20,14 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ')v%aiw9f&rb5omc)*@+_5xec1bee_&)k3(3k9q+z(7jyloa3!#'
+SECRET_KEY = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
-# ALLOWED_HOSTS = ['thaisminas.com.br']
-
 
 # Application definition
 
@@ -136,9 +134,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = '/staticfiles/'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'public/images/')
-
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 20,
@@ -151,3 +146,10 @@ REST_FRAMEWORK = {
         'user': '10000/minute'
     }
 }
+
+AWS_ACCESS_KEY_ID = ''
+AWS_SECRET_ACCESS_KEY = ''
+
+DEFAULT_FILE_STORAGE = ''
+AWS_STORAGE_BUCKET_NAME = ''
+AWS_S3_REGION_NAME = ''
