@@ -5,7 +5,7 @@ class Album(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField('Nome:', max_length=35)
     description_short = models.CharField('Descrição curta:', max_length=50)
-    cover_image = models.ImageField('Imagem de capa:', max_length=255, upload_to='albuns', blank=True)
+    cover_image = models.ImageField('Imagem de capa:', max_length=255, upload_to='albuns')
     slug = models.SlugField('Identificador:', max_length=50)
     status = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
