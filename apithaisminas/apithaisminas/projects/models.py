@@ -26,7 +26,7 @@ class Project(models.Model):
     name = models.CharField('Nome:', max_length=50)
     description_short = models.CharField('Descrição curta:', max_length=50)
     content = FroalaField('Conteúdo:')
-    cover_image = models.ImageField('Imagem de capa:', max_length=100, upload_to='projects')
+    cover_image = models.ImageField('Imagem de capa:', max_length=255, upload_to='projects', blank=True)
     slug = models.SlugField('Identificador:', max_length=50)
     status = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)

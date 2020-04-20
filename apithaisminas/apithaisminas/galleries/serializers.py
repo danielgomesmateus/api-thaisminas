@@ -20,6 +20,7 @@ class AlbumSerializer(ModelSerializer):
         fields = [
             'name',
             'description_short',
+            'cover_image',
             'slug',
             'photos'
         ]
