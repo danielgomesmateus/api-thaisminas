@@ -27,7 +27,6 @@ class Project(models.Model):
     description_short = models.CharField('Descrição curta:', max_length=50)
     content = FroalaField('Conteúdo:')
     cover_image = models.ImageField('Imagem de capa:', max_length=255, upload_to='projects/images')
-    files = models.FileField('Arquivos do projeto:', max_length=255, upload_to='projects/files')
     slug = models.SlugField('Identificador:', max_length=50)
     status = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -36,6 +35,26 @@ class Project(models.Model):
     class Meta:
         verbose_name = 'Projeto'
         verbose_name_plural = 'Projetos'
+        ordering = ['-id']
+
+    def __str__(self):
+        return self.name
+
+
+class File(models.Model):
+    id = models.AutoField(primary_key=True)
+    project = models.ForeignKey(Project, null=True, related_name='files', on_delete=models.CASCADE)
+    name = models.CharField('Nome:', max_length=50)
+    version = models.CharField('Versão:', max_length=50)
+    content = FroalaField('Descrição:')
+    files = models.FileField('Arquivos do projeto:', max_length=255, upload_to='projects/images')
+    status = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'Arquivo'
+        verbose_name_plural = 'Arquivos'
         ordering = ['-id']
 
     def __str__(self):
