@@ -47,7 +47,7 @@ class File(models.Model):
     name = models.CharField('Nome:', max_length=50)
     version = models.CharField('Versão:', max_length=50)
     content = FroalaField('Descrição:')
-    files = models.FileField('Arquivos do projeto:', max_length=255, upload_to='projects/images')
+    files = models.FileField('Arquivos do projeto:', max_length=255, upload_to='projects/files')
     status = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
