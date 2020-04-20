@@ -7,5 +7,6 @@ class PageSerializer(serializers.ModelSerializer):
         model = Page
         fields = (
             'title', 
-            'content'
+            'content',
+            'slug'
         )
