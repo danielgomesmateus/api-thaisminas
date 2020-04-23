@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'apithaisminas.pages',
     'apithaisminas.projects',
     'apithaisminas.galleries',
+    'apithaisminas.slides',
 ]
 
 X_FRAME_OPTIONS='SAMEORIGIN'

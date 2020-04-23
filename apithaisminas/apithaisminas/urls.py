@@ -25,6 +25,7 @@ from apithaisminas.contacts.urls import router as contacts_router
 from apithaisminas.pages.urls import router as pages_router
 from apithaisminas.galleries.urls import router as galleries_router
 from apithaisminas.projects.urls import router as projects_router
+from apithaisminas.slides.urls import router as slides_router
 
 router = DefaultRouter()
 
@@ -32,6 +33,7 @@ router.registry.extend(contacts_router.registry)
 router.registry.extend(pages_router.registry)
 router.registry.extend(galleries_router.registry)
 router.registry.extend(projects_router.registry)
+router.registry.extend(slides_router.registry)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
