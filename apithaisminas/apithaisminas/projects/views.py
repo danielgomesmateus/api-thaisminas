@@ -12,7 +12,7 @@ class ProjectView(ModelViewSet):
 
 
 class CategorieView(ModelViewSet):
-    queryset = Categorie.objects.filter(status=True, projects__status=True)
+    queryset = Categorie.objects.filter(status=True, projects__status=True).distinct()
     default_serializer_class = CategorieSerializer
     serializer_classes = {
         'list': CategorieSerializer,
