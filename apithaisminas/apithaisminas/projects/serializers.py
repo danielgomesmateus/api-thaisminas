@@ -18,6 +18,16 @@ class ProjectSerializer(ModelSerializer):
 
 class CategorieSerializer(ModelSerializer):
 
+    class Meta:
+        model = Categorie
+        fields = (
+            'name',
+            'slug'
+        )
+
+
+class CategorieProjectsSerializer(ModelSerializer):
+
     projects = ProjectSerializer(many=True)
 
     class Meta:
