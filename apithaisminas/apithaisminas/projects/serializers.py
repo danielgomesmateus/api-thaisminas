@@ -43,7 +43,7 @@ class FileSerializer(ModelSerializer):
 
     class Meta:
         model = File
-        lookup_field = 'project__slug'
+        lookup_field = 'slug'
         fields = (
             'files',
         )

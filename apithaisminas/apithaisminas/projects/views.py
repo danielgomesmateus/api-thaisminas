@@ -1,4 +1,4 @@
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 
 from .models import Project, Categorie, File
 
@@ -7,7 +7,8 @@ from .serializers import CategorieSerializer, CategorieProjectsSerializer, Proje
 from rest_framework.viewsets import ModelViewSet
 from rest_framework import mixins
 from rest_framework import viewsets
-from rest_framework.decorators import action
+from rest_framework import status
+from rest_framework.response import Response
 
 
 class ProjectView(ModelViewSet):
@@ -33,13 +34,22 @@ class CategorieView(ModelViewSet):
 
 class FileView(mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     http_method_names = ['get']
-    lookup_field = 'project__slug'
+    lookup_field = 'slug'
 
     def retrieve(self, request, *args, **kwargs):
         try:
-            queryset = File.objects.all().select_related('project').first()
-            serializer = FileSerializer(queryset)
+            project_slug = kwargs.get('slug', None)
+            
+            queryset = File.objects.filter(
+                project__slug=project_slug,
+                project__status=True,
+                status=True
+            ).first()
 
-            return HttpResponseRedirect(serializer.data.get('files'))
+            if queryset:
+                serializer = FileSerializer(queryset)
+                return HttpResponseRedirect(serializer.data.get('files'))
+            raise File.DoesNotExist
         except File.DoesNotExist:
-            return HttpResponse('Arquivo não encontrado')
+            response = dict(detail='Arquivo não encontrado')
+            return Response(response, status=status.HTTP_404_NOT_FOUND)
