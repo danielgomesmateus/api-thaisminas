@@ -14,6 +14,7 @@
 - django-froala-editor==3.1.0
 - djangorestframework==3.11.0
 - django-storages==1.9.1
+- drf-yasg==1.17.1
 - idna==2.9
 - jsonpath==0.82
 - mysqlclient==1.4.6
