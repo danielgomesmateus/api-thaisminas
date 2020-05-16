@@ -20,6 +20,10 @@ from django.conf.urls.static import static
 from . import settings
 
 from rest_framework.routers import DefaultRouter
+from rest_framework import permissions
+
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
 
 from apithaisminas.contacts.urls import router as contacts_router
 from apithaisminas.pages.urls import router as pages_router
@@ -35,7 +39,19 @@ router.registry.extend(galleries_router.registry)
 router.registry.extend(projects_router.registry)
 router.registry.extend(slides_router.registry)
 
+schema_view = get_schema_view(
+    openapi.Info(
+        title="TMinas API",
+        default_version='v1',
+        description="API description",
+        contact=openapi.Contact(email="contato@danielgmateus.com.br")
+    ),
+    public=False,
+    permission_classes=(permissions.AllowAny,),
+)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('v1/', include(router.urls))
+    path('v1/', include(router.urls)),
+    path('v1/docs/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc')
 ]

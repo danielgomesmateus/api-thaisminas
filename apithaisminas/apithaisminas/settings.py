@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'drf_yasg',
     'froala_editor',
     'corsheaders',
     'apithaisminas.contacts',
@@ -148,6 +149,11 @@ REST_FRAMEWORK = {
         'anon': '100/minute',
         'user': '10000/minute'
     }
+}
+
+REDOC_SETTINGS = {
+   'LAZY_RENDERING': False,
+   'PATH_IN_MIDDLE': True
 }
 
 AWS_ACCESS_KEY_ID = ''

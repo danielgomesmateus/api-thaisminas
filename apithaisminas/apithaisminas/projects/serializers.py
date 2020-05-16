@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 
-from .models import Project, Categorie
+from .models import Project, Categorie, File
 
 
 class ProjectSerializer(ModelSerializer):
@@ -36,4 +36,13 @@ class CategorieProjectsSerializer(ModelSerializer):
             'name',
             'slug',
             'projects'
+        )
+
+
+class FileSerializer(ModelSerializer):
+
+    class Meta:
+        model = File
+        fields = (
+            'files',
         )
