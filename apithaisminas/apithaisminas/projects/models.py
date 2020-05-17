@@ -59,3 +59,20 @@ class File(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Download(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField('Nome completo:', max_length=50)
+    email = models.EmailField('Email de contato:', max_length=40)    
+    file = models.ForeignKey(File, related_name='download', on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'Registro de download'
+        verbose_name_plural = 'Registro de download'
+        ordering = ['-id']
+
+        def __str__(self):
+            return '{} - {}'.format(self.name, self.file)
