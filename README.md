@@ -58,9 +58,11 @@ DATABASES = {
 AWS_ACCESS_KEY_ID = ''
 AWS_SECRET_ACCESS_KEY = ''
 
-DEFAULT_FILE_STORAGE = ''
 AWS_STORAGE_BUCKET_NAME = ''
+AWS_DEFAULT_ACL = ''
 AWS_S3_REGION_NAME = ''
+
+AWS_LOCATION = ''
 ```
 
 Complete com as informações relativas ao seu ambiente.
@@ -81,4 +83,10 @@ python3 manage.py createsuperuser --settings=apithaisminas.local_settings
 
 ```
 python3 manage.py runserver --settings=apithaisminas.local_settings
+```
+
+7) Para visualizar a documentação da API, acesse o endereço abaixo:
+
+```
+http://localhost:8000/v1/docs
 ```

@@ -135,8 +135,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = os.path.join(BASE_DIR,'static/')
-STATIC_ROOT = os.path.join(BASE_DIR,'static/')
+STATIC_URL = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
@@ -159,7 +159,15 @@ REDOC_SETTINGS = {
 AWS_ACCESS_KEY_ID = ''
 AWS_SECRET_ACCESS_KEY = ''
 
-DEFAULT_FILE_STORAGE = ''
 AWS_STORAGE_BUCKET_NAME = ''
-AWS_DEFAULT_ACL = 'public-read'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_DEFAULT_ACL = ''
 AWS_S3_REGION_NAME = ''
+
+AWS_LOCATION = ''
+AWS_QUERYSTRING_AUTH = False
+
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+
+DEFAULT_FILE_STORAGE = 'apithaisminas.storage_backends.MediaStorage'
