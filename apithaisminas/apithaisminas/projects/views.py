@@ -34,6 +34,7 @@ class CategorieView(ModelViewSet):
 
 class FileView(mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     http_method_names = ['get']
+    serializer_class = FileSerializer
     lookup_field = 'slug'
 
     def retrieve(self, request, *args, **kwargs):
